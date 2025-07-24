@@ -1,0 +1,96 @@
+<html>
+<head>
+  <title>Color Picker / Random Color Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    #colorDisplay {
+      width: 150px;
+      height: 150px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #3e8e41;
+    }
+
+    input[type="color"] {
+      margin-bottom: 10px;
+    }
+
+    #hexCode {
+      font-size: 1.2em;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Color Picker / Random Color Generator</h1>
+
+    <div id="colorDisplay"></div>
+
+    <input type="color" id="colorPicker" value="#ffffff">
+
+    <button onclick="generateRandomColor()">Generate Random Color</button>
+    <button onclick="copyHexCode()">Copy Hex Code</button>
+
+    <div id="hexCode"></div>
+  </div>
+
+  <script>
+    const colorDisplay = document.getElementById("colorDisplay");
+    const colorPicker = document.getElementById("colorPicker");
+    const hexCodeDisplay = document.getElementById("hexCode");
+
+    // Initial color display
+    updateColorDisplay(colorPicker.value);
+
+    colorPicker.addEventListener("input", updateColorDisplay);
+
+    function generateRandomColor() {
+      const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+      colorPicker.value = randomColor;
+      updateColorDisplay(randomColor);
+    }
+
+    function updateColorDisplay(color) {
+      colorDisplay.style.backgroundColor = color;
+      hexCodeDisplay.textContent = "Hex Code: " + color;
+    }
+
+    function copyHexCode() {
+      const hexCode = hexCodeDisplay.textContent.split(": ")[1]; // Extract hex code
+      navigator.clipboard.writeText(hexCode)
+        .then(() => {
+          alert("Hex code copied to clipboard!");
+        })
+        .catch(err => {
+          console.error('Failed to copy: ', err);
+          alert("Failed to copy hex code.  Please copy manually.");
+        });
+    }
+  </script>
+
+</body>
+</html>
