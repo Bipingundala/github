@@ -1,0 +1,11 @@
+EmployeeID,Name,DepartmentID,Position,Salary
+E001,John Smith,1,HR Manager,70000
+E002,Susan Johnson,2,Software Engineer,90000
+E003,Michael Lee,2,DevOps Engineer,88000
+E004,Linda Davis,3,Marketing Analyst,65000
+E005,Robert Brown,4,Accountant,72000
+E006,Emily Wilson,5,Sales Executive,68000
+E007,David Martinez,2,Backend Developer,87000
+E008,Alice Taylor,3,Content Strategist,63000
+E009,Chris Anderson,1,HR Assistant,50000
+E010,Nancy Thomas,5,Sales Manager,75000
